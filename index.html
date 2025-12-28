@@ -17,6 +17,9 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        'xs': '475px', // Added for smaller mobiles
+                    },
                     colors: {
                         brand: {
                             blue: '#1055C9',
@@ -57,7 +60,6 @@
             color: #F8FAFC;
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
-            /* Explicitly set body font */
         }
         /* 1. Grain Overlay */
         
@@ -115,7 +117,6 @@
         .btn-outline:hover {
             background: white;
             color: #030712 !important;
-            /* Force black text on hover */
             border-color: white;
             transform: translateY(-2px);
         }
@@ -162,7 +163,6 @@
         .percentage {
             fill: #fff;
             font-family: 'Syne', sans-serif;
-            /* Keeping Syne for Numbers to match headings */
             font-weight: bold;
             font-size: 0.5em;
             text-anchor: middle;
@@ -192,14 +192,14 @@
     <div class="grain-overlay"></div>
 
     <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-        <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-brand-blue/10 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>
-        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-orange/10 rounded-full blur-[100px] mix-blend-screen animate-pulse-slow" style="animation-delay: 2s;"></div>
+        <div class="absolute top-0 left-0 md:left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-brand-blue/10 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen animate-pulse-slow"></div>
+        <div class="absolute bottom-0 right-0 md:right-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-brand-orange/10 rounded-full blur-[60px] md:blur-[100px] mix-blend-screen animate-pulse-slow" style="animation-delay: 2s;"></div>
     </div>
 
-    <nav class="fixed w-full z-50 transition-all duration-300 border-b border-white/5 bg-brand-dark/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center">
-                <img src="img/logo.png" alt="ASRAFUL" class="h-10 w-auto object-contain">
+    <nav class="fixed w-full z-50 transition-all duration-300 border-b border-white/5 bg-brand-dark/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center z-50">
+                <img src="img/logo.png" alt="ASRAFUL" class="h-8 md:h-10 w-auto object-contain">
             </a>
 
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
@@ -207,17 +207,18 @@
                 <a href="#services" class="hover:text-white hover:underline decoration-brand-orange decoration-2 underline-offset-8 transition-all">Services</a>
                 <a href="#about" class="hover:text-white hover:underline decoration-brand-orange decoration-2 underline-offset-8 transition-all">About</a>
                 <a href="#contact" class="btn-primary px-6 py-2.5 rounded-full font-bold text-sm tracking-wide">
-            Start Project
-        </a>
+                    Start Project
+                </a>
             </div>
 
-            <button id="menu-btn" class="md:hidden text-white p-2 focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-    </button>
+            <button id="menu-btn" class="md:hidden text-white p-2 focus:outline-none z-50 relative">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
-        <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/95 backdrop-blur-xl z-50 hidden-menu flex flex-col items-center justify-center space-y-8 text-2xl font-display font-bold">
+
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/98 backdrop-blur-xl z-[40] hidden-menu flex flex-col items-center justify-center space-y-8 text-2xl font-display font-bold">
             <button id="close-menu" class="absolute top-6 right-6 text-white p-2 hover:rotate-90 transition duration-300">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -230,9 +231,10 @@
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex items-center pt-24 pb-12">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right" data-aos-duration="1000">
+    <header class="relative min-h-[100dvh] md:min-h-screen flex items-center pt-32 pb-12 md:pt-24">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            <div data-aos="fade-right" data-aos-duration="1000" class="text-center lg:text-left order-2 lg:order-1">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-orange/30 bg-brand-orange/10 mb-8 animate-float">
                     <span class="relative flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
@@ -241,30 +243,30 @@
                     <span class="text-xs font-bold tracking-widest text-brand-orange uppercase font-sans">Available for Hire</span>
                 </div>
 
-                <h1 class="text-5xl md:text-7xl font-sans font-extrabold leading-[1.1] mb-6">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold leading-[1.1] mb-6">
                     Let's build your <br>
                     <span class="text-gradient">idea into a brand.</span>
                 </h1>
 
-                <p class="text-gray-400 text-lg md:text-xl leading-relaxed mb-10 max-w-lg font-sans">
+                <p class="text-gray-400 text-base md:text-lg lg:text-xl leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 font-sans">
                     I am a professional brand designer helping businesses communicate their vision through strategic design.
                 </p>
 
-                <div class="flex flex-wrap gap-4">
-                    <a href="#contact" class="btn-primary px-8 py-4 rounded-full font-bold text-white flex items-center gap-2 font-sans">
+                <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
+                    <a href="#contact" class="btn-primary px-8 py-4 rounded-full font-bold text-white flex items-center justify-center gap-2 font-sans w-full sm:w-auto">
                         View Pricing
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                         </svg>
                     </a>
-                    <a href="#work" class="btn-outline px-8 py-4 rounded-full font-bold flex items-center gap-2 font-sans">
+                    <a href="#work" class="btn-outline px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 font-sans w-full sm:w-auto">
                         My Portfolio
                     </a>
                 </div>
             </div>
 
-            <div class="relative" data-aos="fade-left" data-aos-duration="1200">
-                <div class="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/20 group js-tilt">
+            <div class="relative order-1 lg:order-2" data-aos="fade-left" data-aos-duration="1200">
+                <div class="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/20 group js-tilt max-w-[500px] mx-auto lg:max-w-none">
                     <img src="img/showcase.png" alt="Hero" class="w-full h-auto object-cover transition duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 </div>
@@ -273,12 +275,12 @@
     </header>
 
     <div class="py-12 w-full" id="stats-section">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="glass-card rounded-3xl p-10 md:p-14">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="glass-card rounded-3xl p-8 md:p-14">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
 
                     <div class="flex flex-col items-center justify-center" data-aos="fade-up">
-                        <div class="relative w-32 h-32">
+                        <div class="relative w-28 h-28 md:w-32 md:h-32">
                             <svg viewBox="0 0 36 36" class="circular-chart text-brand-blue block w-full h-full">
                             <path class="circle-bg"
                                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -287,17 +289,16 @@
                                 data-target="90" />
                         </svg>
                             <div class="absolute inset-0 flex items-center justify-center flex-col">
-                                <span class="text-3xl font-bold text-white">
+                                <span class="text-2xl md:text-3xl font-bold text-white">
                                 <span class="count-up" data-target="100">100</span>+
                                 </span>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mt-4 font-sans">Brands Helped
-                        </p>
+                        <p class="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold mt-4 font-sans">Brands Helped</p>
                     </div>
 
                     <div class="flex flex-col items-center justify-center" data-aos="fade-up" data-aos-delay="100">
-                        <div class="relative w-32 h-32">
+                        <div class="relative w-28 h-28 md:w-32 md:h-32">
                             <svg viewBox="0 0 36 36" class="circular-chart text-brand-orange block w-full h-full">
                             <path class="circle-bg"
                                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -306,16 +307,16 @@
                                 data-target="100" />
                         </svg>
                             <div class="absolute inset-0 flex items-center justify-center flex-col">
-                                <span class="text-3xl font-bold text-white">
+                                <span class="text-2xl md:text-3xl font-bold text-white">
                                 <span class="count-up" data-target="100">100</span>%
                                 </span>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mt-4 font-sans">Satisfaction</p>
+                        <p class="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold mt-4 font-sans">Satisfaction</p>
                     </div>
 
-                    <div class="flex flex-col items-center justify-center" data-aos="fade-up" data-aos-delay="200">
-                        <div class="relative w-32 h-32">
+                    <div class="flex flex-col items-center justify-center sm:col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative w-28 h-28 md:w-32 md:h-32">
                             <svg viewBox="0 0 36 36" class="circular-chart text-purple-500 block w-full h-full">
                             <path class="circle-bg"
                                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -324,14 +325,13 @@
                                 data-target="85" />
                         </svg>
                             <div class="absolute inset-0 flex items-center justify-center flex-col leading-none">
-                                <span class="text-3xl font-bold text-white mb-1">
+                                <span class="text-2xl md:text-3xl font-bold text-white mb-1">
                                 <span class="count-up" data-target="3">03</span>
                                 </span>
-                                <span class="text-sm uppercase font-semibold text-gray-300">Days</span>
+                                <span class="text-xs md:text-sm uppercase font-semibold text-gray-300">Days</span>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mt-4 font-sans">Avg. Delivery
-                        </p>
+                        <p class="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold mt-4 font-sans">Avg. Delivery</p>
                     </div>
 
                 </div>
@@ -339,91 +339,91 @@
         </div>
     </div>
 
-    <section id="services" class="py-24 relative">
+    <section id="services" class="py-16 md:py-24 relative">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">My Services</h2>
-                <p class="text-gray-400 font-sans">Everything you need to build a world-class brand.</p>
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">My Services</h2>
+                <p class="text-gray-400 font-sans text-sm md:text-base">Everything you need to build a world-class brand.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-card p-8 rounded-2xl hover:border-brand-blue/50 transition duration-300 group" data-aos="fade-up">
-                    <div class="w-14 h-14 bg-brand-blue rounded-xl flex items-center justify-center mb-6 text-white shadow-lg shadow-brand-blue/30 group-hover:scale-110 transition">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 md:p-8 rounded-2xl hover:border-brand-blue/50 transition duration-300 group" data-aos="fade-up">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-brand-blue rounded-xl flex items-center justify-center mb-6 text-white shadow-lg shadow-brand-blue/30 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-sans">Logo Design</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-3 font-sans">Logo Design</h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-sans">Strategic, memorable logos that stand out in your industry.</p>
                 </div>
 
-                <div class="glass-card p-8 rounded-2xl hover:border-brand-orange/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-brand-orange rounded-xl flex items-center justify-center mb-6 text-white shadow-lg shadow-brand-orange/30 group-hover:scale-110 transition">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                <div class="glass-card p-6 md:p-8 rounded-2xl hover:border-brand-orange/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-brand-orange rounded-xl flex items-center justify-center mb-6 text-white shadow-lg shadow-brand-orange/30 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-sans">Brand Identity</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-3 font-sans">Brand Identity</h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-sans">Complete visual systems: Typography, Color Palettes, and Guidelines.</p>
                 </div>
 
-                <div class="glass-card p-8 rounded-2xl hover:border-purple-500/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg shadow-purple-600/30 group-hover:scale-110 transition">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2-2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                <div class="glass-card p-6 md:p-8 rounded-2xl hover:border-purple-500/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg shadow-purple-600/30 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2-2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-sans">Stationery</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-3 font-sans">Stationery</h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-sans">Business cards, Letterheads, and Social Media Kits.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="work" class="py-24 bg-brand-surface/30">
+    <section id="work" class="py-16 md:py-24 bg-brand-surface/30">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-display font-bold mb-12 text-center">Selected Work</h2>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-12 text-center">Selected Work</h2>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-[400px] border border-white/5 js-tilt" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-[300px] md:h-[400px] border border-white/5 js-tilt" data-aos="fade-up">
                     <img src="img/taxacc logo-01.jpg" alt="Project 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-60">
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <h3 class="text-2xl font-bold text-white translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 font-sans">Tax Acc</h3>
+                    <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                        <h3 class="text-xl md:text-2xl font-bold text-white translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 font-sans">Tax Acc</h3>
                         <p class="text-brand-blue font-bold translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 delay-100 font-sans">Identity Design</p>
                     </div>
                 </div>
 
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-[400px] border border-white/5 js-tilt" data-aos="fade-up" data-aos-delay="100">
+                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-[300px] md:h-[400px] border border-white/5 js-tilt" data-aos="fade-up" data-aos-delay="100">
                     <img src="img/Behance project [Recovered]-03.png" alt="Project 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-60">
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <h3 class="text-2xl font-bold text-white translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 font-sans">IndoAsia Trading</h3>
+                    <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                        <h3 class="text-xl md:text-2xl font-bold text-white translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 font-sans">IndoAsia Trading</h3>
                         <p class="text-brand-orange font-bold translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 delay-100 font-sans">Trading Company</p>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mt-12">
-                <a href="https://drive.google.com/drive/folders/1hWBBrrI6nr3h0G67shvGpPW7WWq_bN4S?usp=sharing" target="_blank" class="btn-outline px-8 py-3 rounded-full font-bold inline-block hover:bg-white hover:text-black transition font-sans">
-        See Full Portfolio in Drive ↗
-    </a>
+                <a href="https://drive.google.com/drive/folders/1hWBBrrI6nr3h0G67shvGpPW7WWq_bN4S?usp=sharing" target="_blank" class="btn-outline px-8 py-3 rounded-full font-bold inline-block hover:bg-white hover:text-black transition font-sans w-full md:w-auto">
+                    See Full Portfolio in Drive ↗
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-brand-surface/20">
+    <section id="about" class="py-16 md:py-24 bg-brand-surface/20">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-display font-bold text-center mb-16">Client Stories</h2>
-            <div class="grid md:grid-cols-2 gap-8">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12 md:mb-16">Client Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="glass-card p-8 rounded-2xl" data-aos="fade-up">
-                    <p class="text-gray-300 italic mb-6 leading-relaxed font-sans">"Asraful's designs are world-class. He understood our brand immediately and the delivery was super fast. The Standard package is great value."</p>
+                    <p class="text-gray-300 italic mb-6 leading-relaxed font-sans text-sm md:text-base">"Asraful's designs are world-class. He understood our brand immediately and the delivery was super fast. The Standard package is great value."</p>
                     <div class="flex items-center gap-4">
                         <img src="img/MHR.jpg" alt="Mazedul Hasan Rahul" class="w-12 h-12 rounded-full object-cover border border-white/20">
                         <div>
-                            <h4 class="font-bold text-white font-sans">Mazedul Hasan Rahul</h4>
+                            <h4 class="font-bold text-white font-sans text-sm md:text-base">Mazedul Hasan Rahul</h4>
                             <p class="text-xs text-brand-orange font-sans">CEO, MHR Chemistry Academy</p>
                         </div>
                     </div>
                 </div>
                 <div class="glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <p class="text-gray-300 italic mb-6 leading-relaxed font-sans">"We needed a full rebrand and Asraful delivered beyond expectations. The guidelines he provided helped us keep our marketing consistent."</p>
+                    <p class="text-gray-300 italic mb-6 leading-relaxed font-sans text-sm md:text-base">"We needed a full rebrand and Asraful delivered beyond expectations. The guidelines he provided helped us keep our marketing consistent."</p>
                     <div class="flex items-center gap-4">
                         <img src="img/fr.jpeg" alt="F R Sakib" class="w-12 h-12 rounded-full object-cover border border-white/20">
                         <div>
-                            <h4 class="font-bold text-white font-sans">F R Sakib</h4>
+                            <h4 class="font-bold text-white font-sans text-sm md:text-base">F R Sakib</h4>
                             <p class="text-xs text-brand-orange font-sans">Founder, Tax Acc</p>
                         </div>
                     </div>
@@ -432,62 +432,62 @@
         </div>
     </section>
 
-    <section id="contact" class="pt-24 pb-12 relative bg-gradient-to-t from-brand-blue/20 to-brand-dark">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center mb-20">
+    <section id="contact" class="pt-16 pb-12 md:pt-24 relative bg-gradient-to-t from-brand-blue/20 to-brand-dark">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center mb-20">
 
-            <div data-aos="fade-right">
-                <div class="relative group">
+            <div data-aos="fade-right" class="order-1 md:order-1">
+                <div class="relative group max-w-[400px] mx-auto">
                     <div class="absolute inset-0 bg-brand-orange rounded-2xl transform rotate-3 group-hover:rotate-6 transition duration-500"></div>
                     <img src="img/profile pic.jpg" onerror="this.src='https://placehold.co/400x500/333/FFF?text=Profile'" alt="Asraful" class="relative rounded-2xl shadow-2xl w-full z-10 border border-white/10">
                 </div>
             </div>
 
-            <div data-aos="fade-left">
-                <h2 class="text-5xl font-display font-bold mb-8">Let's work together.</h2>
+            <div data-aos="fade-left" class="order-2 md:order-2">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-8 text-center md:text-left">Let's work together.</h2>
                 <div class="space-y-6">
-                    <a href="mailto:arifinashraf242@gmail.com" class="flex items-center gap-6 p-6 glass-card rounded-2xl hover:bg-brand-surface transition group">
-                        <div class="w-12 h-12 bg-brand-blue rounded-full flex items-center justify-center text-white text-xl">@</div>
-                        <div>
+                    <a href="mailto:arifinashraf242@gmail.com" class="flex items-center gap-4 md:gap-6 p-4 md:p-6 glass-card rounded-2xl hover:bg-brand-surface transition group">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-blue rounded-full flex items-center justify-center text-white text-lg md:text-xl shrink-0">@</div>
+                        <div class="overflow-hidden">
                             <p class="text-sm text-gray-400 font-sans">Email Me</p>
-                            <p class="text-lg font-bold text-white group-hover:text-brand-blue transition font-sans">arifinashraf242@gmail.com</p>
+                            <p class="text-base md:text-lg font-bold text-white group-hover:text-brand-blue transition font-sans truncate">arifinashraf242@gmail.com</p>
                         </div>
                     </a>
 
-                    <a href="tel:+8801888043297" class="flex items-center gap-6 p-6 glass-card rounded-2xl hover:bg-brand-surface transition group">
-                        <div class="w-12 h-12 bg-brand-orange rounded-full flex items-center justify-center text-white text-xl">📞</div>
+                    <a href="tel:+8801888043297" class="flex items-center gap-4 md:gap-6 p-4 md:p-6 glass-card rounded-2xl hover:bg-brand-surface transition group">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-orange rounded-full flex items-center justify-center text-white text-lg md:text-xl shrink-0">📞</div>
                         <div>
                             <p class="text-sm text-gray-400 font-sans">Call Me</p>
-                            <p class="text-lg font-bold text-white group-hover:text-brand-orange transition font-sans">+880 1888 043 297</p>
+                            <p class="text-base md:text-lg font-bold text-white group-hover:text-brand-orange transition font-sans">+880 1888 043 297</p>
                         </div>
                     </a>
                 </div>
 
-                <div class="flex gap-4 mt-8">
-                    <a href="#" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition duration-300">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <div class="flex gap-4 mt-8 justify-center md:justify-start">
+                    <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition duration-300">
+                        <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a href="#" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#1769ff] hover:text-white hover:border-[#1769ff] transition duration-300">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.187 3-4.013 0-7.433-3.389-7.433-7.574 0-4.265 3.298-7.426 7.504-7.426 3.94 0 6.965 2.713 6.965 6.432 0 .843-.063 1.511-.158 1.859h-10.706c.123 2.528 2.346 4.261 5.419 4.261 2.454 0 4.079-1.487 4.596-2.522l3.001.97zm-7.661-4.606h6.61c.18-3.672-2.25-4.046-3.352-4.046-2.438 0-3.366 2.106-3.258 4.046zm-11.065-5.394v12h-3v-12h3zm-3-5h3v3h-3v-3z"/></svg>
+                    <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#1769ff] hover:text-white hover:border-[#1769ff] transition duration-300">
+                        <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.187 3-4.013 0-7.433-3.389-7.433-7.574 0-4.265 3.298-7.426 7.504-7.426 3.94 0 6.965 2.713 6.965 6.432 0 .843-.063 1.511-.158 1.859h-10.706c.123 2.528 2.346 4.261 5.419 4.261 2.454 0 4.079-1.487 4.596-2.522l3.001.97zm-7.661-4.606h6.61c.18-3.672-2.25-4.046-3.352-4.046-2.438 0-3.366 2.106-3.258 4.046zm-11.065-5.394v12h-3v-12h3zm-3-5h3v3h-3v-3z"/></svg>
                     </a>
-                    <a href="#" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition duration-300">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition duration-300">
+                        <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
-                    <a href="https://wa.me/8801888043297" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition duration-300">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-.967-.272-.297-.471-.421-.644-.421-.174 0-.371.001-.569.001-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                    <a href="https://wa.me/8801888043297" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition duration-300">
+                        <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-.967-.272-.297-.471-.421-.644-.421-.174 0-.371.001-.569.001-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="border-t border-white/5 text-center pt-8 text-gray-500 text-sm font-sans">
+        <div class="border-t border-white/5 text-center pt-8 text-gray-500 text-sm font-sans px-6">
             &copy; 2026 ASRAFUL. Crafted for Excellence.
         </div>
     </section>
 
-    <a href="https://wa.me/8801888043297" target="_blank" class="fixed bottom-8 right-8 z-50 group">
+    <a href="https://wa.me/8801888043297" target="_blank" class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 group">
         <span class="absolute -top-10 right-0 bg-white text-brand-dark text-xs font-bold px-3 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition duration-300 whitespace-nowrap font-sans">Chat Now</span>
-        <div class="bg-[#25D366] p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-green-600 transition transform hover:scale-110 flex items-center justify-center w-16 h-16 animate-bounce">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <div class="bg-[#25D366] p-3 md:p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-green-600 transition transform hover:scale-110 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 animate-bounce">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-.967-.272-.297-.471-.421-.644-.421-.174 0-.371.001-.569.001-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
             </svg>
         </div>
