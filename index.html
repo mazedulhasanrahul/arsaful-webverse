@@ -217,7 +217,7 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/98 backdrop-blur-xl z-[40] hidden-menu flex flex-col items-center justify-center space-y-8 text-2xl font-display font-bold">
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/98 backdrop-blur-xl z-[60] hidden-menu flex flex-col items-center justify-center space-y-8 text-2xl font-display font-bold">
             <button id="close-menu" class="absolute top-6 right-6 text-white p-2 hover:rotate-90 transition duration-300" aria-label="Close Menu">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -230,19 +230,19 @@
         </div>
     </nav>
 
-    <header class="relative min-h-[100dvh] md:min-h-screen flex items-center pt-32 pb-12 md:pt-24">
+    <header class="relative min-h-[100dvh] md:min-h-screen flex items-center pt-24 pb-12 lg:pt-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-            <div data-aos="fade-right" data-aos-duration="1000" class="text-center lg:text-left order-2 lg:order-1">
+            <div data-aos="fade-right" data-aos-duration="1000" class="text-center lg:text-left order-1">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-orange/30 bg-brand-orange/10 mb-8 animate-float">
                     <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-orange"></span>
                     </span>
                     <span class="text-xs font-bold tracking-widest text-brand-orange uppercase font-sans">Available for Hire</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold leading-[1.1] mb-6">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold leading-tight mb-6">
                     Let's build your <br>
                     <span class="text-gradient">idea into a brand.</span>
                 </h1>
@@ -253,18 +253,18 @@
 
                 <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
                     <a href="#contact" class="btn-primary px-8 py-4 rounded-full font-bold text-white flex items-center justify-center gap-2 font-sans w-full sm:w-auto">
-                        View Pricing
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                        </svg>
-                    </a>
+                    View Pricing
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
                     <a href="#work" class="btn-outline px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 font-sans w-full sm:w-auto">
-                        My Portfolio
-                    </a>
+                    My Portfolio
+                </a>
                 </div>
             </div>
 
-            <div class="relative order-1 lg:order-2" data-aos="fade-left" data-aos-duration="1200">
+            <div class="relative order-2" data-aos="fade-left" data-aos-duration="1200">
                 <div class="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/20 group js-tilt max-w-[500px] mx-auto lg:max-w-none">
                     <img src="img/showcase.png" alt="Hero" class="w-full h-auto object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/600x600/1055C9/FFF?text=Showcase'">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
