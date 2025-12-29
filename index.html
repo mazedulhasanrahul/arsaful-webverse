@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASRAFUL - Premium Brand Identity Designer Portfolio">
     <title>ASRAFUL | Premium Brand Identity</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,7 @@
             theme: {
                 extend: {
                     screens: {
-                        'xs': '475px', // Added for smaller mobiles
+                        'xs': '475px',
                     },
                     colors: {
                         brand: {
@@ -29,7 +30,6 @@
                         }
                     },
                     fontFamily: {
-                        /* RESTORED FONT SETTINGS */
                         sans: ['Inter', 'sans-serif'],
                         display: ['Syne', 'sans-serif'],
                     },
@@ -53,7 +53,7 @@
     </script>
 
     <style>
-        /* --- WORLD CLASS STYLING --- */
+        /* --- CORE STYLING --- */
         
         body {
             background-color: #030712;
@@ -74,14 +74,21 @@
             opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
-        /* 2. Enhanced Glass Card */
+        /* 2. Enhanced Glass Card with Fallback */
         
         .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(30, 41, 59, 0.95);
+            /* Fallback for older browsers */
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        @supports (backdrop-filter: blur(12px)) {
+            .glass-card {
+                background: rgba(30, 41, 59, 0.4);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
         }
         /* 3. Gradient Text */
         
@@ -159,14 +166,6 @@
             stroke-linecap: round;
             transition: stroke-dasharray 1.5s ease-out;
         }
-        
-        .percentage {
-            fill: #fff;
-            font-family: 'Syne', sans-serif;
-            font-weight: bold;
-            font-size: 0.5em;
-            text-anchor: middle;
-        }
         /* Mobile Menu Animation */
         
         #mobile-menu {
@@ -199,7 +198,7 @@
     <nav class="fixed w-full z-50 transition-all duration-300 border-b border-white/5 bg-brand-dark/90 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center z-50">
-                <img src="img/logo.png" alt="ASRAFUL" class="h-8 md:h-10 w-auto object-contain">
+                <img src="img/logo.png" alt="ASRAFUL" class="h-8 md:h-10 w-auto object-contain" onerror="this.style.display='none'; this.parentElement.innerText='ASRAFUL'">
             </a>
 
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
@@ -211,7 +210,7 @@
                 </a>
             </div>
 
-            <button id="menu-btn" class="md:hidden text-white p-2 focus:outline-none z-50 relative">
+            <button id="menu-btn" class="md:hidden text-white p-2 focus:outline-none z-50 relative" aria-label="Menu">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -219,7 +218,7 @@
         </div>
 
         <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/98 backdrop-blur-xl z-[40] hidden-menu flex flex-col items-center justify-center space-y-8 text-2xl font-display font-bold">
-            <button id="close-menu" class="absolute top-6 right-6 text-white p-2 hover:rotate-90 transition duration-300">
+            <button id="close-menu" class="absolute top-6 right-6 text-white p-2 hover:rotate-90 transition duration-300" aria-label="Close Menu">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
@@ -267,7 +266,7 @@
 
             <div class="relative order-1 lg:order-2" data-aos="fade-left" data-aos-duration="1200">
                 <div class="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/20 group js-tilt max-w-[500px] mx-auto lg:max-w-none">
-                    <img src="img/showcase.png" alt="Hero" class="w-full h-auto object-cover transition duration-700 group-hover:scale-105">
+                    <img src="img/showcase.png" alt="Hero" class="w-full h-auto object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/600x600/1055C9/FFF?text=Showcase'">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 </div>
             </div>
@@ -380,7 +379,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-[300px] md:h-[400px] border border-white/5 js-tilt" data-aos="fade-up">
-                    <img src="img/taxacc logo-01.jpg" alt="Project 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-60">
+                    <img src="img/taxacc logo-01.jpg" alt="Project 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-60" onerror="this.src='https://placehold.co/600x400/222/FFF?text=Tax+Acc'">
                     <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
                         <h3 class="text-xl md:text-2xl font-bold text-white translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 font-sans">Tax Acc</h3>
                         <p class="text-brand-blue font-bold translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 delay-100 font-sans">Identity Design</p>
@@ -388,7 +387,7 @@
                 </div>
 
                 <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-[300px] md:h-[400px] border border-white/5 js-tilt" data-aos="fade-up" data-aos-delay="100">
-                    <img src="img/Behance project [Recovered]-03.png" alt="Project 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-60">
+                    <img src="img/Behance project [Recovered]-03.png" alt="Project 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-60" onerror="this.src='https://placehold.co/600x400/222/FFF?text=IndoAsia'">
                     <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
                         <h3 class="text-xl md:text-2xl font-bold text-white translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 font-sans">IndoAsia Trading</h3>
                         <p class="text-brand-orange font-bold translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500 delay-100 font-sans">Trading Company</p>
@@ -411,7 +410,7 @@
                 <div class="glass-card p-8 rounded-2xl" data-aos="fade-up">
                     <p class="text-gray-300 italic mb-6 leading-relaxed font-sans text-sm md:text-base">"Asraful's designs are world-class. He understood our brand immediately and the delivery was super fast. The Standard package is great value."</p>
                     <div class="flex items-center gap-4">
-                        <img src="img/MHR.jpg" alt="Mazedul Hasan Rahul" class="w-12 h-12 rounded-full object-cover border border-white/20">
+                        <img src="img/MHR.jpg" alt="Mazedul Hasan Rahul" class="w-12 h-12 rounded-full object-cover border border-white/20" onerror="this.src='https://placehold.co/100x100?text=MH'">
                         <div>
                             <h4 class="font-bold text-white font-sans text-sm md:text-base">Mazedul Hasan Rahul</h4>
                             <p class="text-xs text-brand-orange font-sans">CEO, MHR Chemistry Academy</p>
@@ -421,7 +420,7 @@
                 <div class="glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
                     <p class="text-gray-300 italic mb-6 leading-relaxed font-sans text-sm md:text-base">"We needed a full rebrand and Asraful delivered beyond expectations. The guidelines he provided helped us keep our marketing consistent."</p>
                     <div class="flex items-center gap-4">
-                        <img src="img/fr.jpeg" alt="F R Sakib" class="w-12 h-12 rounded-full object-cover border border-white/20">
+                        <img src="img/fr.jpeg" alt="F R Sakib" class="w-12 h-12 rounded-full object-cover border border-white/20" onerror="this.src='https://placehold.co/100x100?text=FR'">
                         <div>
                             <h4 class="font-bold text-white font-sans text-sm md:text-base">F R Sakib</h4>
                             <p class="text-xs text-brand-orange font-sans">Founder, Tax Acc</p>
@@ -496,12 +495,24 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script>
+        // 1. Initialize Scroll Animation (AOS)
         AOS.init({
             once: true,
             offset: 80,
             duration: 1000
         });
 
+        // 2. Initialize 3D Tilt Effect (FIXED)
+        if (typeof VanillaTilt !== 'undefined') {
+            VanillaTilt.init(document.querySelectorAll(".js-tilt"), {
+                max: 15, // Max tilt rotation (degrees)
+                speed: 400, // Speed of the enter/exit transition
+                glare: true, // Adds a light glare effect
+                "max-glare": 0.5,
+            });
+        }
+
+        // 3. Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const closeMenu = document.getElementById('close-menu');
         const menu = document.getElementById('mobile-menu');
@@ -511,16 +522,27 @@
             if (menu.classList.contains('hidden-menu')) {
                 menu.classList.remove('hidden-menu');
                 menu.classList.add('visible-menu');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
             } else {
                 menu.classList.remove('visible-menu');
                 menu.classList.add('hidden-menu');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
             }
         }
 
         menuBtn.addEventListener('click', toggleMenu);
         closeMenu.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
+        // Auto-close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (menu.classList.contains('visible-menu')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // 4. Circular Progress Animation
         const statsSection = document.getElementById('stats-section');
         const progressCircles = document.querySelectorAll('.circle');
         const countElements = document.querySelectorAll('.count-up');
